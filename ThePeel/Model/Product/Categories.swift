@@ -10,14 +10,14 @@ import UIKit
 
 class Categories: Codable {
     var name: String
-    var product: [Product]
+    var product: Product?
     
     enum CodingKeys: String, CodingKey {
         case name
         case product
     }
     
-    init(name: String, product: [Product]) {
+    init(name: String, product: Product?) {
         self.name = name
         self.product = product
     }

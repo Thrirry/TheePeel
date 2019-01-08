@@ -8,4 +8,5 @@
 
 import UIKit
 
-let url = "https://static.tumblr.com/vgmqumd/Ugkpl089l/dataserivce.json"
+//let url = "https://static.tumblr.com/vgmqumd/Ugkpl089l/dataserivce.json"
+let url = "https://static.tumblr.com/vgmqumd/fwGpl0a2k/dataserivce.json"

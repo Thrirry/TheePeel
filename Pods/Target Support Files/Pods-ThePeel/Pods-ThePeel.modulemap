@@ -1,0 +1,6 @@
+framework module Pods_ThePeel {
+  umbrella header "Pods-ThePeel-umbrella.h"
+
+  export *
+  module * { export * }
+}

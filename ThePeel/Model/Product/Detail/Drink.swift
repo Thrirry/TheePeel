@@ -9,15 +9,18 @@
 import UIKit
 
 class Drink: Codable {
+    var name: String
     var price: String
     var volume: String
     
     enum CodingKeys: String, CodingKey {
+        case name
         case price
         case volume
     }
     
-    init(price: String, volume: String) {
+    init(name: String, price: String, volume: String) {
+        self.name = name
         self.price = price
         self.volume = volume
     }

@@ -9,22 +9,27 @@
 import UIKit
 
 class Product: Codable {
-    var name: String
-    var pizza: [Detail]
+//    var name: String
+    var pizza: [PizzaDetail]
+    var drink: [Drink]
+    var dessert: [Dessert]
     
     enum CodingKeys: String, CodingKey {
-        case name
+//        case name
         case pizza
+        case drink
+        case dessert
     }
     
-    init(name: String, pizza: [Detail]) {
-        self.name = name
+    init(name: String, pizza: [PizzaDetail], drink: [Drink], dessert: [Dessert]) {
+//        self.name = name
         self.pizza = pizza
+        self.drink = drink
+        self.dessert = dessert
     }
 }
 
-
-class Detail: Codable {
+class PizzaDetail: Codable {
     var id: String
     var name: String
     var category: String

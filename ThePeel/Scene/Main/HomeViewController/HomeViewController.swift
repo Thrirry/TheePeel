@@ -10,28 +10,52 @@ import UIKit
 
 class HomeViewController: BaseViewController {
     
+    // MARK: - IBOutlet
+    
+    // MARK: - Properties
+    var homePresenter: HomePresenter!
+    
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupUI()
+    }
+    
+    // MARK: - Initialization
     static func viewController() -> HomeViewController? {
         return Helper.getViewController(named: "HomeViewController", inSb: "Main")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func setupUI() {
         view.backgroundColor = .white
-        
-        guard let url = URL(string: url) else { return }
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            guard let dataResponse = data, error == nil else {
-                print(error?.localizedDescription ?? "Response error")
-                return
-            }
-            do {
-                let product = try JSONDecoder().decode(Categories.self, from: dataResponse)
-                print(product)
-            }catch {
-                print("Error In Json Data")
-            }
-            }.resume()
     }
+
+    // MARK: - Private Method
+    fileprivate func initPresenter() {
+        homePresenter = HomePresenter.init(categoryServer: CategoryService())
+        homePresenter.homeDelegate = self
+    }
+    
+    fileprivate func callAPI() {
+        homePresenter.callAPI(isCall: true)
+    }
+    
+    // MARK: - Public Method
+    // MARK: - Target
+    // MARK: - IBAction
+    // MARK: - Service
 }
 
+extension HomeViewController: HomeDelegate {
+    func categoriesSuccess(category: Categories) {
+        
+    }
+    
+    func categoriesFailed() {
+        
+    }
+}
